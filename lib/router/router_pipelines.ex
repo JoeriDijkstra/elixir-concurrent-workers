@@ -2,6 +2,9 @@ defmodule Router.Pipelines do
 
   alias Router.Functions
 
+  @doc """
+  Sets up the pipeline to retrieve the logs. This is the simple job pipeline we will start
+  """
   def get_log_pipeline(body) do
     # Geef het beestje een naam
     server_name = Functions.get_process_name(body)

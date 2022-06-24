@@ -10,6 +10,9 @@ defmodule HelperWorker.HelperWorkerServer do
     {:reply, state, state}
   end
 
+  @doc """
+  Makes the request to the external server with error handling
+  """
   def handle_call(:make_request, _, state) do
     try do
       case HTTPoison.get("https://jsonplaceholder.typicode.com/posts/") do
