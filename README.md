@@ -1,21 +1,13 @@
-# BettyLoggingService
+# Concurrent Workers
+This project is a setup for long-lasting API calls where every call spins up a new worker, does some work, and returns a value which kills the worker
 
-**TODO: Add description**
+This will eventually be used to analyze large datasets with many concurrent users to avoid slowdown and starting each worker as it's own asynchronous process.
 
-## Installation
+Currently it's infintely scalable which also means it's still vulnerable.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `betty_logging_service` to your list of dependencies in `mix.exs`:
+Not yet recommended to use in a prod application
 
-```elixir
-def deps do
-  [
-    {:betty_logging_service, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/betty_logging_service>.
-
+# TODO's
+1. Create a scheduler
+2. Create a queueing system
+3. Limit the amount of workers
