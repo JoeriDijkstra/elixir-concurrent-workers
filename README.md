@@ -8,6 +8,7 @@ Currently it's infintely scalable which also means it's still vulnerable.
 Not yet recommended to use in a prod application
 
 # TODO's
-1. Create a scheduler
-2. Create a queueing system
-3. Limit the amount of workers
+1. Write Tests
+2. Create a scheduler
+3. Create a queueing system
+4. Limit the amount of workers
