@@ -9,7 +9,8 @@ defmodule BettyLoggingService.Application do
   def start(_type, _args) do
     children = [
       {Plug.Cowboy, scheme: :http, plug: Router.Router, options: [port: 4001]},
-      {StateServer.Server, %{}}
+      {StateServer.Server, %{}},
+      {Scheduler.Scheduler,  []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
