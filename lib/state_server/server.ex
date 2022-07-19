@@ -2,7 +2,8 @@ defmodule StateServer.Server do
   use GenServer
 
   @default_state %{
-    "workers" => 50
+    "workers" => 0,
+    "max_workers" => 20
   }
 
   def start_link(_state) do

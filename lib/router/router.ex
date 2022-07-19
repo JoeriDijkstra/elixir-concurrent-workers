@@ -1,8 +1,6 @@
 defmodule Router.Router do
   use Plug.Router
 
-  alias Router.Pipelines
-
   plug :match
   plug :dispatch
 
@@ -11,8 +9,11 @@ defmodule Router.Router do
     {:ok, decoded_body} = Jason.decode(body)
 
     try do
-      response = Pipelines.get_log_pipeline(decoded_body)
-      send_resp(conn, 200, response)
+      response = GenServer.cast(:scheduler, {:add, decoded_body})
+      case response do
+        {:error, message} -> raise message
+        res -> send_resp(conn, 200, res)
+      end
     rescue
       e in RuntimeError -> send_resp(conn, 200, "Error occured: " <> e.message)
     end

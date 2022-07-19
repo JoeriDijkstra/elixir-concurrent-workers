@@ -1,7 +1,7 @@
 defmodule Scheduler.Scheduler do
   use GenServer
 
-  alias Scheduler.Functions
+  alias Scheduler.ServerFunctions
 
   def start_link(state) do
     GenServer.start_link(__MODULE__, state, name: :scheduler)
@@ -16,8 +16,9 @@ defmodule Scheduler.Scheduler do
   end
 
   def handle_call(:execute, _, state) do
-    {worker_state, new_state} = Functions.update_state(state)
-    Functions.build_worker(state)
+    {worker_state, new_state} = ServerFunctions.update_state(state)
+    ServerFunctions.build_worker(state)
+
 
     {:reply, worker_state, new_state}
   end
